@@ -1,16 +1,21 @@
 package wizen.rafal.WMP.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 @Entity
+@Table(name="manufacturer")
 @Getter
 @Setter
 @ToString
@@ -27,6 +32,9 @@ public class Manufacturer {
 	@Column(name="short_name")
 	private String shortName;
 
+	@OneToMany(mappedBy="manufacturer")
+	private List<Item> items;
+	
 	public Manufacturer() {
 		
 	}
