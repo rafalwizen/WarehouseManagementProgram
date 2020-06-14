@@ -45,6 +45,10 @@ public class Item {
 	@Column(name="item_type_id")
 	private int itemTypeId;
 
+	public Item() {
+		
+	}
+	
 	public Item(String name, int weight, char area, int bookstand, int shelf, int availability) {
 		this.name = name;
 		this.weight = weight;

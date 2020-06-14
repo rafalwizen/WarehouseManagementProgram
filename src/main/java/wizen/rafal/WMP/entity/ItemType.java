@@ -30,6 +30,10 @@ public class ItemType {
 	@Column(name="is_teritorialy_restricted")
 	private boolean isTeritorialyRestricted;
 
+	public ItemType() {
+		
+	}
+	
 	public ItemType(boolean belongsToCumstomsWarehouse, boolean isDamaged, boolean isTeritorialyRestricted) {
 		this.belongsToCumstomsWarehouse = belongsToCumstomsWarehouse;
 		this.isDamaged = isDamaged;

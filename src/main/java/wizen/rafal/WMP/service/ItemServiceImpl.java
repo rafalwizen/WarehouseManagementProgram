@@ -25,8 +25,7 @@ public class ItemServiceImpl implements ItemService {
 	@Transactional
 	public List<Item> findAll() {
 		
-		
-		return null;
+		return itemDAO.findAll();
 	}
 
 }

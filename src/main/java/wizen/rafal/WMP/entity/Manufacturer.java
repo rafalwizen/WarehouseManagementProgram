@@ -27,6 +27,10 @@ public class Manufacturer {
 	@Column(name="short_name")
 	private String shortName;
 
+	public Manufacturer() {
+		
+	}
+	
 	public Manufacturer(String name, String shortName) {
 		this.name = name;
 		this.shortName = shortName;
