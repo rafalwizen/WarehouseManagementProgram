@@ -6,26 +6,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import wizen.rafal.WMP.dao.ItemDAO;
+import wizen.rafal.WMP.dao.GenericDAO;
 import wizen.rafal.WMP.entity.Item;
 
 @Service
 public class ItemServiceImpl implements ItemService {
 
-	private ItemDAO itemDAO;
+	private GenericDAO genericDAO;
 	
 	@Autowired
-	public ItemServiceImpl(ItemDAO itemDAO) {
-		this.itemDAO = itemDAO;
+	public ItemServiceImpl(GenericDAO genericDAO) {
+		this.genericDAO = genericDAO;
 	}
 
 
 
 	@Override
 	@Transactional
-	public List<Item> findAll() {
+	public <T> List<T> findAll(final Class<T> type) {
 		
-		return itemDAO.findAll();
+		return genericDAO.findAll(type);
 	}
 
 }

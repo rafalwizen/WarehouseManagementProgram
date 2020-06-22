@@ -27,7 +27,7 @@ public class ItemRestController {
 	
 	@GetMapping("/items")
 	public List<Item> getItemsList() {
-		return itemService.findAll();
+		return itemService.findAll(Item.class);
 	}
 	
 	@GetMapping("/manufacturers")

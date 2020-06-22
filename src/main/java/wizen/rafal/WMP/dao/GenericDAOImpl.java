@@ -12,25 +12,25 @@ import org.springframework.stereotype.Repository;
 import wizen.rafal.WMP.entity.Item;
 
 @Repository
-public class ItemDAOImpl implements ItemDAO {
+public class GenericDAOImpl implements GenericDAO {
 
 	private EntityManager entityManager;
 	
 	
 	@Autowired
-	public ItemDAOImpl(EntityManager entityManager) {
+	public GenericDAOImpl(EntityManager entityManager) {
 		this.entityManager = entityManager;
 	}
 
 
 
 	@Override
-	public List<Item> findAll() {
+	public <T> List<T> findAll(final Class<T> type) {
 		Session currentSession = entityManager.unwrap(Session.class);
-		Query <Item>theQuery = currentSession.createQuery("from Item", Item.class);
-		List<Item> items = theQuery.getResultList();
+		Query <T>theQuery = currentSession.createQuery("from "+ type.getSimpleName(), type);
+		List<T> list = theQuery.getResultList();
 		
-		return items;
+		return list;
 	}
 
 }

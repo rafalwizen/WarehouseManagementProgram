@@ -6,5 +6,5 @@ import wizen.rafal.WMP.entity.Item;
 
 public interface ItemService {
 
-	public List<Item>findAll();
+	public <T> List<T>findAll(final Class<T> type);
 }
