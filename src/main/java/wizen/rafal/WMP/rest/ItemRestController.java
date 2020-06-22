@@ -10,19 +10,16 @@ import org.springframework.web.bind.annotation.RestController;
 import wizen.rafal.WMP.entity.Item;
 import wizen.rafal.WMP.entity.Manufacturer;
 import wizen.rafal.WMP.service.ItemService;
-import wizen.rafal.WMP.service.ManufacturerService;
 
 @RestController
 @RequestMapping("/api")
 public class ItemRestController {
 
 	private ItemService itemService;
-	private ManufacturerService manufacturerService;
 
 	@Autowired
-	public ItemRestController(ItemService itemService, ManufacturerService manufacturerService) {
+	public ItemRestController(ItemService itemService) {
 		this.itemService = itemService;
-		this.manufacturerService = manufacturerService;
 	}
 	
 	@GetMapping("/items")
@@ -32,6 +29,6 @@ public class ItemRestController {
 	
 	@GetMapping("/manufacturers")
 	public List<Manufacturer> getManufacturersList() {
-		return manufacturerService.findAll();
+		return itemService.findAll(Manufacturer.class);
 	}
 }
