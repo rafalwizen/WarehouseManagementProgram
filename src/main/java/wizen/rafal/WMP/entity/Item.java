@@ -46,15 +46,15 @@ public class Item {
 	@Column(name="availability")
 	private int availability;
 	
-	//@Column(name="manufacturer_id")
 	@ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
 			 			 CascadeType.DETACH, CascadeType.REFRESH})
 	@JoinColumn(name="manufacturer_id")
-	@JsonIgnore
 	private Manufacturer manufacturer;
 	
-	@Column(name="item_type_id")
-	private int itemTypeId;
+	@ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
+						 CascadeType.DETACH, CascadeType.REFRESH})
+	@JoinColumn(name="item_type_id")
+	private ItemType itemType;
 
 	public Item() {
 		

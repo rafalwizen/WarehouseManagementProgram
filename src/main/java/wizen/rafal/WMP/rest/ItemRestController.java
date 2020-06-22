@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import wizen.rafal.WMP.entity.Item;
+import wizen.rafal.WMP.entity.ItemType;
 import wizen.rafal.WMP.entity.Manufacturer;
 import wizen.rafal.WMP.service.ItemService;
 
@@ -30,5 +31,10 @@ public class ItemRestController {
 	@GetMapping("/manufacturers")
 	public List<Manufacturer> getManufacturersList() {
 		return itemService.findAll(Manufacturer.class);
+	}
+	
+	@GetMapping("/itemTypes")
+	public List<ItemType> getItemTypesList() {
+		return itemService.findAll(ItemType.class);
 	}
 }
