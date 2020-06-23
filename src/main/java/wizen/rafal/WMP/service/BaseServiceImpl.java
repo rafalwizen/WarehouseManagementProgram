@@ -10,12 +10,12 @@ import wizen.rafal.WMP.dao.GenericDAO;
 import wizen.rafal.WMP.entity.Item;
 
 @Service
-public class ItemServiceImpl implements ItemService {
+public class BaseServiceImpl implements BaseService {
 
 	private GenericDAO genericDAO;
 	
 	@Autowired
-	public ItemServiceImpl(GenericDAO genericDAO) {
+	public BaseServiceImpl(GenericDAO genericDAO) {
 		this.genericDAO = genericDAO;
 	}
 

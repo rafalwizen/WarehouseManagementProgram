@@ -1,11 +1,16 @@
 package wizen.rafal.WMP.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -37,6 +42,10 @@ public class Branch {
 
 	@Column(name="postal_code")
 	private String postalCode;
+	
+	@OneToMany(mappedBy="branch")
+	@JsonIgnore
+	private List<Employee> employees;
 	
 	public Branch() {
 		
