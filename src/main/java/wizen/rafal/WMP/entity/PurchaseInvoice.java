@@ -14,11 +14,11 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table(name="shipping_order")
+@Table(name="purchase_invoice")
 @Getter
 @Setter
 @ToString
-public class ShippingOrder {
+public class PurchaseInvoice {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -26,16 +26,15 @@ public class ShippingOrder {
 	private int id;
 	
 	@Column(name="date_of_issue")
-	private Date dateOdIssue;
+	private Date dateOfIssue;
 	
-	private TransportCompany transportCompany;
-	
-	public ShippingOrder() {
+	public PurchaseInvoice() {
 		
 	}
 
-	public ShippingOrder(int id, Date dateOdIssue) {
+	public PurchaseInvoice(int id, Date dateOfIssue) {
 		this.id = id;
-		this.dateOdIssue = dateOdIssue;
+		this.dateOfIssue = dateOfIssue;
 	}
+	
 }

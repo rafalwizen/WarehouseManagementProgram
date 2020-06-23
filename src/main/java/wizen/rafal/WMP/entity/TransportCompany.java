@@ -28,4 +28,15 @@ public class TransportCompany {
 	
 	@Column(name="short_name")
 	private String shortName;
+
+	public TransportCompany() {
+		
+	}
+
+	public TransportCompany(int id, String name, String shortName) {
+		this.id = id;
+		this.name = name;
+		this.shortName = shortName;
+	}
+	
 }
