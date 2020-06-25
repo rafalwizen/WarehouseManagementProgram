@@ -10,8 +10,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -46,28 +44,36 @@ public class Item {
 	@Column(name="availability")
 	private int availability;
 	
+	@Column(name="belongs_to_cumstoms_warehouse")
+	private boolean belongsToCumstomsWarehouse;
+	
+	@Column(name="is_damaged")
+	private boolean isDamaged;
+	
+	@Column(name="is_teritorialy_restricted")
+	private boolean isTeritorialyRestricted;
+	
 	@ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
 			 			 CascadeType.DETACH, CascadeType.REFRESH})
 	@JoinColumn(name="manufacturer_id")
 	private Manufacturer manufacturer;
-	
-	@ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
-						 CascadeType.DETACH, CascadeType.REFRESH})
-	@JoinColumn(name="item_type_id")
-	private ItemType itemType;
 
 	public Item() {
 		
 	}
-	
-	public Item(String name, int weight, char area, int bookstand, int shelf, int availability) {
+
+	public Item(int id, String name, int weight, char area, int bookstand, int shelf, int availability,
+			boolean belongsToCumstomsWarehouse, boolean isDamaged, boolean isTeritorialyRestricted) {
+		this.id = id;
 		this.name = name;
 		this.weight = weight;
 		this.area = area;
 		this.bookstand = bookstand;
 		this.shelf = shelf;
 		this.availability = availability;
+		this.belongsToCumstomsWarehouse = belongsToCumstomsWarehouse;
+		this.isDamaged = isDamaged;
+		this.isTeritorialyRestricted = isTeritorialyRestricted;
 	}
-
 	
 }
