@@ -179,9 +179,13 @@ ALTER TABLE `purchase_order`
 ADD FOREIGN KEY (`purchase_invoice_id`) REFERENCES `purchase_invoice` (`id`),
 ADD FOREIGN KEY (`item_id`) REFERENCES `item` (`id`);
 				
+                -- add some data for testing ------------------------------
 INSERT INTO `transport_company` VALUES 
 			(1,'DeHaeL','DHL');
-            
+          
+INSERT INTO `shipping_order` VALUES 
+			(1,'2020-06-25 10:00:00',1);
+           
 INSERT INTO `manufacturer` VALUES 
 			(1, "Xerox", "XRX"); 
             

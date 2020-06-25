@@ -2,11 +2,14 @@ package wizen.rafal.WMP.entity;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.Getter;
@@ -26,16 +29,19 @@ public class ShippingOrder {
 	private int id;
 	
 	@Column(name="date_of_issue")
-	private Date dateOdIssue;
+	private Date dateOfIssue;
 	
+	@ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
+			 			 CascadeType.DETACH, CascadeType.REFRESH})
+	@JoinColumn(name="transport_company_id")
 	private TransportCompany transportCompany;
 	
 	public ShippingOrder() {
 		
 	}
 
-	public ShippingOrder(int id, Date dateOdIssue) {
+	public ShippingOrder(int id, Date dateOfIssue) {
 		this.id = id;
-		this.dateOdIssue = dateOdIssue;
+		this.dateOfIssue = dateOfIssue;
 	}
 }
