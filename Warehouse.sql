@@ -15,19 +15,12 @@ CREATE TABLE `item` (
   `bookstand` int(4) DEFAULT NULL,
   `shelf` int(4) DEFAULT NULL,
   `availability` int(11) NOT NULL,
-  `manufacturer_id` int(11) NOT NULL,
-  `item_type_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin2;	
-
-
-CREATE TABLE `item_type` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
   `belongs_to_cumstoms_warehouse` boolean DEFAULT NULL,
   `is_damaged` boolean DEFAULT NULL,
   `is_teritorialy_restricted` boolean DEFAULT NULL,
+  `manufacturer_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin2;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin2;	
 
 
 CREATE TABLE `manufacturer` (
@@ -152,7 +145,6 @@ CREATE TABLE `purchase_order` (
 				-- creating foreign keys -----------------------------------------
 
 ALTER TABLE `item`
-ADD FOREIGN KEY (`item_type_id`) REFERENCES `item_type` (`id`),
 ADD FOREIGN KEY (`manufacturer_id`) REFERENCES `manufacturer` (`id`);
 
 
@@ -190,14 +182,11 @@ ADD FOREIGN KEY (`item_id`) REFERENCES `item` (`id`);
 INSERT INTO `transport_company` VALUES 
 			(1,'DeHaeL','DHL');
             
-INSERT INTO `item_type` VALUES 
-			(1, 0, 0, 0);
-            
 INSERT INTO `manufacturer` VALUES 
 			(1, "Xerox", "XRX"); 
             
 INSERT INTO `item` VALUES 
-			(1, 'toner', 120, 'A', 2, 1, 13, 1, 1);
+			(1, 'toner', 120, 'A', 2, 1, 13, 0, 0, 0, 1);
             
 INSERT INTO `branch` VALUES 
 			(1, "Wrocław - Office", "Wro-O", "Prosta 1/2", "Wrocław", "53-226");
