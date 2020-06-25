@@ -9,4 +9,4 @@ I just started to work on this project. Inspiration to do this application was c
 ## Screenshots
 
 Program is based on my own SQL schema:
-![Example screenshot](./screenshots/sql_schema.jpg)
+![Example screenshot](./screenshots/sql_schema_1.jpg)
