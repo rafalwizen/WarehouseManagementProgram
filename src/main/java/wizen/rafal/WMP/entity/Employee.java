@@ -1,5 +1,7 @@
 package wizen.rafal.WMP.entity;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,7 +10,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -56,6 +61,10 @@ public class Employee {
 			 			 CascadeType.DETACH, CascadeType.REFRESH})
 	@JoinColumn(name="branch_id")
 	private Branch branch;
+	
+	@OneToMany(mappedBy="employee")
+	@JsonIgnore
+	private List<PurchaseInvoice> purchaseInvoices;
 	
 	public Employee() {
 		

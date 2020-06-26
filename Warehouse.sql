@@ -181,16 +181,16 @@ ADD FOREIGN KEY (`item_id`) REFERENCES `item` (`id`);
 				
                 -- add some data for testing ------------------------------
 INSERT INTO `transport_company` VALUES 
-			(1,'DeHaeL','DHL');
+			(1,"DeHaeL","DHL");
           
 INSERT INTO `shipping_order` VALUES 
-			(1,'2020-06-25 10:00:00',1);
+			(1,"2020-06-25 10:00:00",1);
            
 INSERT INTO `manufacturer` VALUES 
 			(1, "Xerox", "XRX"); 
             
 INSERT INTO `item` VALUES 
-			(1, 'toner', 120, 'A', 2, 1, 13, 0, 0, 0, 1);
+			(1, "toner", 120, "A", 2, 1, 13, 0, 0, 0, 1);
             
 INSERT INTO `branch` VALUES 
 			(1, "Wrocław - Office", "Wro-O", "Prosta 1/2", "Wrocław", "53-226");
@@ -199,4 +199,16 @@ INSERT INTO `position` VALUES
 			(1, "Senior Tradesman", "Tradesman", 1);
             
 INSERT INTO `employee` VALUES 
-			(1, "John", "Doe", 111, "Krzywa 2/1", "Wrocław", "53-266", "doe.john@warehouse.pl", 1, 1);
+			(1, "John", "Doe", 111, "Krzywa 2/1", "Wrocław", "53-266", "doe.john@our-company.pl", 1, 1);
+
+INSERT INTO `customer` VALUES 
+			(1, "Dobre Tonery", 123456, "Kręta 5", "Poznań", "60-103", "kontakt@dobre-tonery.pl");
+
+INSERT INTO `transfer` VALUES 
+			(1, false, null, 1099);
+
+INSERT INTO `purchase_invoice` VALUES 
+			(1, "2020-06-26 11:05:00", 1, 1, 1);
+
+INSERT INTO `purchase_order` VALUES 
+			(1, 5, 1, 1);
