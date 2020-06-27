@@ -1,6 +1,7 @@
 package wizen.rafal.WMP.entity;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -51,6 +53,9 @@ public class SalesInvoice {
 			 			CascadeType.DETACH, CascadeType.REFRESH})
 	@JoinColumn(name="transfer_id")
 	private Transfer transfer;
+	
+	@OneToMany(mappedBy="salesInvoice")
+	private List<SalesOrder> salesOrders;
 	
 	public SalesInvoice() {
 		

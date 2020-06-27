@@ -15,6 +15,7 @@ import wizen.rafal.WMP.entity.Position;
 import wizen.rafal.WMP.entity.PurchaseInvoice;
 import wizen.rafal.WMP.entity.PurchaseOrder;
 import wizen.rafal.WMP.entity.SalesInvoice;
+import wizen.rafal.WMP.entity.SalesOrder;
 import wizen.rafal.WMP.entity.ShippingOrder;
 import wizen.rafal.WMP.entity.Transfer;
 import wizen.rafal.WMP.entity.TransportCompany;
@@ -79,12 +80,17 @@ public class BaseRestController {
 	}
 	
 	@GetMapping("/purchaseOrders")
-	public List<PurchaseOrder> getPurchaseOrderssList() {
+	public List<PurchaseOrder> getPurchaseOrdersList() {
 		return baseService.findAll(PurchaseOrder.class);
 	}
 	
 	@GetMapping("/salesInvoices")
 	public List<SalesInvoice> getSalesInvoicesList() {
 		return baseService.findAll(SalesInvoice.class);
+	}
+	
+	@GetMapping("/salesOrders")
+	public List<SalesOrder> getSalesOrdersList() {
+		return baseService.findAll(SalesOrder.class);
 	}
 }
