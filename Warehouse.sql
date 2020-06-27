@@ -205,10 +205,19 @@ INSERT INTO `customer` VALUES
 			(1, "Dobre Tonery", 123456, "Kręta 5", "Poznań", "60-103", "kontakt@dobre-tonery.pl");
 
 INSERT INTO `transfer` VALUES 
-			(1, false, null, 1099);
+			(1, false, null, 1099),
+            (2, true, "2020-06-27", 9011);
 
 INSERT INTO `purchase_invoice` VALUES 
 			(1, "2020-06-26 11:05:00", 1, 1, 1);
 
 INSERT INTO `purchase_order` VALUES 
 			(1, 5, 1, 1);
+
+INSERT INTO `sales_invoice` VALUES 
+			(1, "2020-06-26 11:05:00", 1, 1, 1, 2);
+
+INSERT INTO `sales_order` VALUES 
+			(1, 7, 1, 1);
+		
+

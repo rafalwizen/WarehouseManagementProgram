@@ -50,6 +50,10 @@ public class Customer {
 	@JsonIgnore
 	private List<PurchaseInvoice> purchaseInvoices;
 	
+	@OneToMany(mappedBy="customer")
+	@JsonIgnore
+	private List<SalesInvoice> salesInvoices;
+	
 	public Customer() {
 		
 	}

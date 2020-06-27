@@ -66,6 +66,10 @@ public class Employee {
 	@JsonIgnore
 	private List<PurchaseInvoice> purchaseInvoices;
 	
+	@OneToMany(mappedBy="employee")
+	@JsonIgnore
+	private List<SalesInvoice> salesInvoices;
+	
 	public Employee() {
 		
 	}

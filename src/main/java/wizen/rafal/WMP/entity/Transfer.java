@@ -41,6 +41,10 @@ public class Transfer {
 	@JsonIgnore
 	private PurchaseInvoice purchaseInvoice;
 	
+	@OneToOne(mappedBy="transfer")
+	@JsonIgnore
+	private SalesInvoice salesInvoice;
+	
 	public Transfer () {
 		
 	}
