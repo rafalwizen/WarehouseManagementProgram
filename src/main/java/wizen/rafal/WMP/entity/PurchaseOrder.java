@@ -37,6 +37,11 @@ public class PurchaseOrder {
 	@JsonIgnore
 	private PurchaseInvoice purchaseInvoice;
 	
+	@ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
+			 			CascadeType.DETACH, CascadeType.REFRESH})
+	@JoinColumn(name="item_id")
+	private Item item;
+	
 	public PurchaseOrder() {
 		
 	}
