@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Getter;
@@ -40,6 +41,11 @@ public class PurchaseInvoice {
 			 			 CascadeType.DETACH, CascadeType.REFRESH})
 	@JoinColumn(name="customer_id")
 	private Customer customer;
+	
+	@OneToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
+			 			 CascadeType.DETACH, CascadeType.REFRESH})
+	@JoinColumn(name="transfer_id")
+	private Transfer transfer;
 	
 	public PurchaseInvoice() {
 		
