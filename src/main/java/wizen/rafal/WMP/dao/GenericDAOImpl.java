@@ -9,8 +9,6 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import wizen.rafal.WMP.entity.Item;
-
 @Repository
 public class GenericDAOImpl implements GenericDAO {
 
