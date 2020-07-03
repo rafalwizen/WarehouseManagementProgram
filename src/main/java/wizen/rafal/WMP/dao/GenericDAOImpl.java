@@ -38,4 +38,12 @@ public class GenericDAOImpl implements GenericDAO {
 		return tempObject;
 	}
 
+
+
+	@Override
+	public <T> void saveOrUpdate(T object) {
+		Session currentSession = entityManager.unwrap(Session.class);
+		currentSession.saveOrUpdate(object);
+	}
+
 }

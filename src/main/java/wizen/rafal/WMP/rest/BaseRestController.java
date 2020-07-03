@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -35,7 +37,17 @@ public class BaseRestController {
 		this.baseService = baseService;
 	}
 	
-	@GetMapping("items/{itemId}")
+	// method to finish....
+	
+	@PostMapping("/items")
+	public Item addNewItem(@RequestBody Item item) {
+		item.setId(0);
+		item.setManufacturer(baseService.findByID(Manufacturer.class, 1));
+		baseService.saveOrUpdate(item);
+		return item;
+	}
+	
+	@GetMapping("/items/{itemId}")
 	public Item getItemById(@PathVariable int itemId) {
 		return baseService.findByID(Item.class, itemId);
 	}

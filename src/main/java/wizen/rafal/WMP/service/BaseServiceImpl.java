@@ -19,12 +19,11 @@ public class BaseServiceImpl implements BaseService {
 		this.genericDAO = genericDAO;
 	}
 
-
+	
 
 	@Override
 	@Transactional
 	public <T> List<T> findAll(final Class<T> type) {
-		
 		return genericDAO.findAll(type);
 	}
 
@@ -33,6 +32,14 @@ public class BaseServiceImpl implements BaseService {
 	public <T> T findByID(Class<T> type, int theId) {
 		
 		return genericDAO.findByID(type, theId);
+	}
+
+
+
+	@Override
+	@Transactional
+	public <T> void saveOrUpdate(T object) {
+		genericDAO.saveOrUpdate(object);
 	}
 
 }
