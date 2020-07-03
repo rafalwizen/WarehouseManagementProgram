@@ -28,4 +28,11 @@ public class BaseServiceImpl implements BaseService {
 		return genericDAO.findAll(type);
 	}
 
+	@Override
+	@Transactional
+	public <T> T findByID(Class<T> type, int theId) {
+		
+		return genericDAO.findByID(type, theId);
+	}
+
 }

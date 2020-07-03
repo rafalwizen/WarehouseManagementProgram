@@ -31,4 +31,11 @@ public class GenericDAOImpl implements GenericDAO {
 		return list;
 	}
 
+	@Override
+	public <T> T findByID(Class<T> type, int theId) {
+		Session currentSession = entityManager.unwrap(Session.class);
+		T tempObject = currentSession.get(type, theId);
+		return tempObject;
+	}
+
 }
