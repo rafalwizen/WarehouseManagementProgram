@@ -3,6 +3,7 @@ package wizen.rafal.WMP.rest;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -46,6 +47,14 @@ public class ItemRestController {
 	@GetMapping("/manufacturers")
 	public List<Manufacturer> getManufacturersList() {
 		return baseService.findAll(Manufacturer.class);
+	}
+	
+	@DeleteMapping("/items/{itemId}")
+	public String deleteItem(@PathVariable int itemId) {
+		Item tempItem = baseService.findByID(Item.class, itemId);
+		if (tempItem == null) {return "Item id not found: " + itemId;}
+		baseService.delete(Item.class, itemId);
+		return "Deleted item id - " + itemId;
 	}
 	
 }

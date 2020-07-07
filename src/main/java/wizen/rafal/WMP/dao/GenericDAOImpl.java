@@ -46,4 +46,13 @@ public class GenericDAOImpl implements GenericDAO {
 		currentSession.saveOrUpdate(object);
 	}
 
+
+
+	@Override
+	public <T> void delete(Class<T> type, int theId) {
+		Session currentSession = entityManager.unwrap(Session.class);
+		T tempObject = currentSession.get(type, theId);
+		currentSession.delete(tempObject);
+	}
+
 }

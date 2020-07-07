@@ -42,4 +42,12 @@ public class BaseServiceImpl implements BaseService {
 		genericDAO.saveOrUpdate(object);
 	}
 
+
+
+	@Override
+	@Transactional
+	public <T> void delete(Class<T> type, int theId) {
+		genericDAO.delete(type, theId);		
+	}
+
 }
