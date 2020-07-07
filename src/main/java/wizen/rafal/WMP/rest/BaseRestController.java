@@ -42,7 +42,7 @@ public class BaseRestController {
 	@PostMapping("/items")
 	public Item addNewItem(@RequestBody Item item) {
 		item.setId(0);
-		item.setManufacturer(baseService.findByID(Manufacturer.class, 1));
+		item.setManufacturer(baseService.findByID(Manufacturer.class, item.getManufacturer().getId()));
 		baseService.saveOrUpdate(item);
 		return item;
 	}
