@@ -29,29 +29,29 @@ public class ItemRestController {
 	@PostMapping("/items")
 	public Item addNewItem(@RequestBody Item item) {
 		item.setId(0);
-		item.setManufacturer(baseService.findByID(Manufacturer.class, item.getManufacturer().getId()));
+		item.setManufacturer(baseService.getByID(Manufacturer.class, item.getManufacturer().getId()));
 		baseService.saveOrUpdate(item);
 		return item;
 	}
 	
 	@GetMapping("/items/{itemId}")
 	public Item getItemById(@PathVariable int itemId) {
-		return baseService.findByID(Item.class, itemId);
+		return baseService.getByID(Item.class, itemId);
 	}
 	
 	@GetMapping("/items")
 	public List<Item> getItemsList() {
-		return baseService.findAll(Item.class);
+		return baseService.getAll(Item.class);
 	}
 	
 	@GetMapping("/manufacturers")
 	public List<Manufacturer> getManufacturersList() {
-		return baseService.findAll(Manufacturer.class);
+		return baseService.getAll(Manufacturer.class);
 	}
 	
 	@DeleteMapping("/items/{itemId}")
 	public String deleteItem(@PathVariable int itemId) {
-		Item tempItem = baseService.findByID(Item.class, itemId);
+		Item tempItem = baseService.getByID(Item.class, itemId);
 		if (tempItem == null) {return "Item id not found: " + itemId;}
 		baseService.delete(Item.class, itemId);
 		return "Deleted item id - " + itemId;

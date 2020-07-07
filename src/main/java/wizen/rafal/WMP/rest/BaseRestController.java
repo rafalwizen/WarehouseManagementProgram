@@ -40,51 +40,51 @@ public class BaseRestController {
 	
 	@GetMapping("/employees")
 	public List<Employee> getEmployeesList() {
-		return baseService.findAll(Employee.class);
+		return baseService.getAll(Employee.class);
 	}
 	
 	@GetMapping("/branches")
 	public List<Branch> getBranchesList() {
-		return baseService.findAll(Branch.class);
+		return baseService.getAll(Branch.class);
 	}
 	
 	@GetMapping("/positions")
 	public List<Position> getPositionsList() {
-		return baseService.findAll(Position.class);
+		return baseService.getAll(Position.class);
 	}
 	
 	@GetMapping("/shippingOrders")
 	public List<ShippingOrder> getShippingOrdersList() {
-		return baseService.findAll(ShippingOrder.class);
+		return baseService.getAll(ShippingOrder.class);
 	}
 	
 	@GetMapping("/transportCompanies")
 	public List<TransportCompany> getTransportCompaniesList() {
-		return baseService.findAll(TransportCompany.class);
+		return baseService.getAll(TransportCompany.class);
 	}
 	
 	@GetMapping("/purchaseInvoices")
 	public List<PurchaseInvoice> getPurchaseInvoicesList() {
-		return baseService.findAll(PurchaseInvoice.class);
+		return baseService.getAll(PurchaseInvoice.class);
 	}
 	
 	@GetMapping("/transfers")
 	public List<Transfer> getTransfersList() {
-		return baseService.findAll(Transfer.class);
+		return baseService.getAll(Transfer.class);
 	}
 	
 	@GetMapping("/purchaseOrders")
 	public List<PurchaseOrder> getPurchaseOrdersList() {
-		return baseService.findAll(PurchaseOrder.class);
+		return baseService.getAll(PurchaseOrder.class);
 	}
 	
 	@GetMapping("/salesInvoices")
 	public List<SalesInvoice> getSalesInvoicesList() {
-		return baseService.findAll(SalesInvoice.class);
+		return baseService.getAll(SalesInvoice.class);
 	}
 	
 	@GetMapping("/salesOrders")
 	public List<SalesOrder> getSalesOrdersList() {
-		return baseService.findAll(SalesOrder.class);
+		return baseService.getAll(SalesOrder.class);
 	}
 }

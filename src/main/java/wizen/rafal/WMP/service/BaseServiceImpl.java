@@ -23,15 +23,15 @@ public class BaseServiceImpl implements BaseService {
 
 	@Override
 	@Transactional
-	public <T> List<T> findAll(final Class<T> type) {
-		return genericDAO.findAll(type);
+	public <T> List<T> getAll(final Class<T> type) {
+		return genericDAO.getAll(type);
 	}
 
 	@Override
 	@Transactional
-	public <T> T findByID(Class<T> type, int theId) {
+	public <T> T getByID(Class<T> type, int theId) {
 		
-		return genericDAO.findByID(type, theId);
+		return genericDAO.getByID(type, theId);
 	}
 
 

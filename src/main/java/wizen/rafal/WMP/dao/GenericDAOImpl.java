@@ -23,7 +23,7 @@ public class GenericDAOImpl implements GenericDAO {
 
 
 	@Override
-	public <T> List<T> findAll(final Class<T> type) {
+	public <T> List<T> getAll(final Class<T> type) {
 		Session currentSession = entityManager.unwrap(Session.class);
 		Query <T>theQuery = currentSession.createQuery("from "+ type.getSimpleName(), type);
 		List<T> list = theQuery.getResultList();
@@ -32,7 +32,7 @@ public class GenericDAOImpl implements GenericDAO {
 	}
 
 	@Override
-	public <T> T findByID(Class<T> type, int theId) {
+	public <T> T getByID(Class<T> type, int theId) {
 		Session currentSession = entityManager.unwrap(Session.class);
 		T tempObject = currentSession.get(type, theId);
 		return tempObject;
