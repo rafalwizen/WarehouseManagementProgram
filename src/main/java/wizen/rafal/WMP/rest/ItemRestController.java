@@ -26,6 +26,11 @@ public class ItemRestController {
 		this.baseService = baseService;
 	}
 	
+	@GetMapping("/items")
+	public List<Item> getItemsList() {
+		return baseService.getAll(Item.class);
+	}
+	
 	@PostMapping("/items")
 	public Item addNewItem(@RequestBody Item item) {
 		item.setId(0);
@@ -39,16 +44,6 @@ public class ItemRestController {
 		return baseService.getByID(Item.class, itemId);
 	}
 	
-	@GetMapping("/items")
-	public List<Item> getItemsList() {
-		return baseService.getAll(Item.class);
-	}
-	
-	@GetMapping("/manufacturers")
-	public List<Manufacturer> getManufacturersList() {
-		return baseService.getAll(Manufacturer.class);
-	}
-	
 	@DeleteMapping("/items/{itemId}")
 	public String deleteItem(@PathVariable int itemId) {
 		Item tempItem = baseService.getByID(Item.class, itemId);
@@ -57,4 +52,15 @@ public class ItemRestController {
 		return "Deleted item id - " + itemId;
 	}
 	
+	@GetMapping("/manufacturers")
+	public List<Manufacturer> getManufacturersList() {
+		return baseService.getAll(Manufacturer.class);
+	}
+	
+	@PostMapping("/manufacturers")
+	public Manufacturer addNewManufacturer(@RequestBody Manufacturer manufacturer) {
+		manufacturer.setId(0);
+		baseService.saveOrUpdate(manufacturer);
+		return manufacturer;
+	}
 }
