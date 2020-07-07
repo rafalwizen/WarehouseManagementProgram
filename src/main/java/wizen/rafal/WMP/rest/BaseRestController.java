@@ -25,7 +25,7 @@ import wizen.rafal.WMP.entity.TransportCompany;
 import wizen.rafal.WMP.service.BaseService;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/test")
 public class BaseRestController {
 
 	// this class is already made for testing
@@ -37,30 +37,6 @@ public class BaseRestController {
 		this.baseService = baseService;
 	}
 	
-	// method to finish....
-	
-	@PostMapping("/items")
-	public Item addNewItem(@RequestBody Item item) {
-		item.setId(0);
-		item.setManufacturer(baseService.findByID(Manufacturer.class, item.getManufacturer().getId()));
-		baseService.saveOrUpdate(item);
-		return item;
-	}
-	
-	@GetMapping("/items/{itemId}")
-	public Item getItemById(@PathVariable int itemId) {
-		return baseService.findByID(Item.class, itemId);
-	}
-	
-	@GetMapping("/items")
-	public List<Item> getItemsList() {
-		return baseService.findAll(Item.class);
-	}
-	
-	@GetMapping("/manufacturers")
-	public List<Manufacturer> getManufacturersList() {
-		return baseService.findAll(Manufacturer.class);
-	}
 	
 	@GetMapping("/employees")
 	public List<Employee> getEmployeesList() {
