@@ -1,0 +1,30 @@
+<div>
+  <table>
+    <tr>
+      <th>id</th>
+      <th>name</th>
+      <th>weight</th>
+      <th>area</th>
+      <th>bookstand</th>
+      <th>shelf</th>
+      <th>availability</th>
+      <th>belongToCustomWarehouse</th>
+      <th>isDamaged</th>
+      <th>isTeritorialyRestricted</th>
+      <th>manufacturer</th>
+    </tr>
+    <tr *ngFor="let item of items$ | async as items">
+      <td>{{ item.id }}</td>
+      <td>{{ item.name }}</td>
+      <td>{{ item.weight }}</td>
+      <td>{{ item.area }}</td>
+      <td>{{ item.bookstand }}</td>
+      <td>{{ item.shelf }}</td>
+      <td>{{ item.availability }}</td>
+      <td>{{ item.belongToCustomWarehouse }}</td>
+      <td>{{ item.isDamaged }}</td>
+      <td>{{ item.isTeritorialyRestricted }}</td>
+      <td>{{ item.manufacturer.name }}</td>
+    </tr>
+  </table>
+</div>
