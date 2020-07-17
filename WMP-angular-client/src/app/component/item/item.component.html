@@ -1,17 +1,17 @@
 <div>
-  <table>
+  <table border="1">
     <tr>
-      <th>id</th>
-      <th>name</th>
-      <th>weight</th>
-      <th>area</th>
-      <th>bookstand</th>
-      <th>shelf</th>
-      <th>availability</th>
-      <th>belongToCustomWarehouse</th>
-      <th>isDamaged</th>
-      <th>isTeritorialyRestricted</th>
-      <th>manufacturer</th>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Weight</th>
+      <th>Area</th>
+      <th>Bookstand</th>
+      <th>Shelf</th>
+      <th>Availability</th>
+      <th>Type of Warehouse</th>
+      <th>Qyality</th>
+      <th>Teritorial Restrictions</th>
+      <th>Manufacturer</th>
     </tr>
     <tr *ngFor="let item of items$ | async as items">
       <td>{{ item.id }}</td>
@@ -21,9 +21,9 @@
       <td>{{ item.bookstand }}</td>
       <td>{{ item.shelf }}</td>
       <td>{{ item.availability }}</td>
-      <td>{{ item.belongToCustomWarehouse }}</td>
-      <td>{{ item.isDamaged }}</td>
-      <td>{{ item.isTeritorialyRestricted }}</td>
+      <td>{{ (item.belongToCustomWarehouse && "Bonded") || "Normal" }}</td>
+      <td>{{ (item.isDamaged && "Damaged") || "Normal" }}</td>
+      <td>{{ (item.isTeritorialyRestricted && "Yes") || "No" }}</td>
       <td>{{ item.manufacturer.name }}</td>
     </tr>
   </table>
