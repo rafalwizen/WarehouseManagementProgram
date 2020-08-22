@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import wizen.rafal.WMP.entity.Customer;
 import wizen.rafal.WMP.entity.Employee;
-import wizen.rafal.WMP.entity.Item;
 import wizen.rafal.WMP.entity.PurchaseInvoice;
 import wizen.rafal.WMP.entity.SalesInvoice;
 import wizen.rafal.WMP.entity.ShippingOrder;
 import wizen.rafal.WMP.entity.Transfer;
+import wizen.rafal.WMP.entity.TransportCompany;
 import wizen.rafal.WMP.service.BaseService;
 
 @RestController
@@ -46,7 +46,9 @@ public class InvoiceRestController {
 	@PostMapping("/purchaseInvoices")
 	public PurchaseInvoice addNewPurchaseInvoice(@RequestBody PurchaseInvoice purchaseInvoice) {
 		purchaseInvoice.setId(0);
-		purchaseInvoice.setTransfer(baseService.getByID(Transfer.class, purchaseInvoice.getTransfer().getId()));
+		Transfer tempTransfer = new Transfer();
+		baseService.saveOrUpdate(tempTransfer);
+		purchaseInvoice.setTransfer(tempTransfer);
 		purchaseInvoice.setCustomer(baseService.getByID(Customer.class, purchaseInvoice.getCustomer().getId()));
 		purchaseInvoice.setEmployee(baseService.getByID(Employee.class, purchaseInvoice.getEmployee().getId()));
 		baseService.saveOrUpdate(purchaseInvoice);
@@ -56,10 +58,16 @@ public class InvoiceRestController {
 	@PostMapping("/salesInvoices")
 	public SalesInvoice addNewSalesInvoice(@RequestBody SalesInvoice salesInvoices) {
 		salesInvoices.setId(0);
-		salesInvoices.setTransfer(baseService.getByID(Transfer.class, salesInvoices.getTransfer().getId()));
+		Transfer tempTransfer = new Transfer();
+		baseService.saveOrUpdate(tempTransfer);
+		salesInvoices.setTransfer(tempTransfer);
+		//salesInvoices.setTransfer(baseService.getByID(Transfer.class, salesInvoices.getTransfer().getId()));
 		salesInvoices.setCustomer(baseService.getByID(Customer.class, salesInvoices.getCustomer().getId()));
 		salesInvoices.setEmployee(baseService.getByID(Employee.class, salesInvoices.getEmployee().getId()));
-		salesInvoices.setShippingOrder(baseService.getByID(ShippingOrder.class, salesInvoices.getShippingOrder().getId()));
+		ShippingOrder tempShippingOrder = new ShippingOrder();
+		tempShippingOrder.setTransportCompany(baseService.getByID(TransportCompany.class, 1));
+		baseService.saveOrUpdate(tempShippingOrder);
+		salesInvoices.setShippingOrder(tempShippingOrder);
 		baseService.saveOrUpdate(salesInvoices);
 		return salesInvoices;
 	}
