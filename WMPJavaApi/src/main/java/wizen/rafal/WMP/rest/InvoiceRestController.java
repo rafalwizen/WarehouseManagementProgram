@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import wizen.rafal.WMP.entity.Customer;
 import wizen.rafal.WMP.entity.Employee;
+import wizen.rafal.WMP.entity.Item;
 import wizen.rafal.WMP.entity.PurchaseInvoice;
 import wizen.rafal.WMP.entity.SalesInvoice;
 import wizen.rafal.WMP.entity.ShippingOrder;
@@ -61,10 +64,29 @@ public class InvoiceRestController {
 		return salesInvoices;
 	}
 	
+	@GetMapping("/purchaseInvoices/{purchaseInvoiceId}")
+	public PurchaseInvoice getPurchaseInvoiceById(@PathVariable int purchaseInvoiceId) {
+		return baseService.getByID(PurchaseInvoice.class, purchaseInvoiceId);
+	}
 	
+	@GetMapping("/salesInvoices/{salesInvoiceId}")
+	public SalesInvoice getSalesInvoiceById(@PathVariable int salesInvoiceId) {
+		return baseService.getByID(SalesInvoice.class, salesInvoiceId);
+	}
 	
+	@DeleteMapping("/purchaseInvoices/{purchaseInvoiceId}")
+	public String deletePurchaseInvoice(@PathVariable int purchaseInvoiceId) {
+		PurchaseInvoice tempInvoice = baseService.getByID(PurchaseInvoice.class, purchaseInvoiceId);
+		if (tempInvoice == null) {return "Purchase invoice id not found: " + purchaseInvoiceId;}
+		baseService.delete(PurchaseInvoice.class, purchaseInvoiceId);
+		return "Deleted purchase invoice id - " + purchaseInvoiceId;
+	}
 	
-	
-	
-	
+	@DeleteMapping("/salesInvoices/{salesInvoiceId}")
+	public String deleteSalesInvoice(@PathVariable int salesInvoiceId) {
+		SalesInvoice tempInvoice = baseService.getByID(SalesInvoice.class, salesInvoiceId);
+		if (tempInvoice == null) {return "Sales invoice id not found: " + salesInvoiceId;}
+		baseService.delete(SalesInvoice.class, salesInvoiceId);
+		return "Deleted sales invoice id - " + salesInvoiceId;
+	}
 }
