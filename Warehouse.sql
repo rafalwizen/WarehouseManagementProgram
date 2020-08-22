@@ -184,8 +184,10 @@ INSERT INTO `transport_company` VALUES
 			(1,"DeHaeL","DHL");
           
 INSERT INTO `shipping_order` VALUES 
-			(1,"2020-06-25 10:00:00",1);
-           
+			(1,"2020-06-25 10:00:00",1),
+			(2,"2020-06-25 13:00:00",1),
+            (3,"2020-07-21 12:00:00",1),
+            (4,"2020-07-21 11:00:00",1);
 INSERT INTO `manufacturer` VALUES 
 			(1, "Xerox", "XRX"); 
             
@@ -206,7 +208,10 @@ INSERT INTO `customer` VALUES
 
 INSERT INTO `transfer` VALUES 
 			(1, false, null, 1099),
-            (2, true, "2020-06-27", 9011);
+            (2, true, "2020-06-27", 9011),
+            (3, true, "2020-08-22", 222),
+            (4, true, "2020-08-23", 121),
+            (5, true, "2020-08-24", 2000);
 
 INSERT INTO `purchase_invoice` VALUES 
 			(1, "2020-06-26 11:05:00", 1, 1, 1);

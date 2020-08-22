@@ -12,4 +12,10 @@ export class ItemsService {
   getAllItems(): Observable<Item[]> {
     return this.http.get<Item[]>('http://localhost:8080/api/item/items');
   }
+
+  // getAllManufacturers(): Observable<Manufacturer[]> {
+  //   return this.http.get<Manufacturer[]>(
+  //     'http://localhost:8080/api/item/manufacturers'
+  //   );
+  // }
 }
