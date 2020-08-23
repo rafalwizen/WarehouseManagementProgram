@@ -63,11 +63,6 @@ public class BaseRestController {
 		return baseService.getAll(TransportCompany.class);
 	}
 	
-	@GetMapping("/purchaseInvoices")
-	public List<PurchaseInvoice> getPurchaseInvoicesList() {
-		return baseService.getAll(PurchaseInvoice.class);
-	}
-	
 	@GetMapping("/transfers")
 	public List<Transfer> getTransfersList() {
 		return baseService.getAll(Transfer.class);
@@ -76,11 +71,6 @@ public class BaseRestController {
 	@GetMapping("/purchaseOrders")
 	public List<PurchaseOrder> getPurchaseOrdersList() {
 		return baseService.getAll(PurchaseOrder.class);
-	}
-	
-	@GetMapping("/salesInvoices")
-	public List<SalesInvoice> getSalesInvoicesList() {
-		return baseService.getAll(SalesInvoice.class);
 	}
 	
 	@GetMapping("/salesOrders")

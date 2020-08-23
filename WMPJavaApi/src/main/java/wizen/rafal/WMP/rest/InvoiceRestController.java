@@ -42,6 +42,11 @@ public class InvoiceRestController {
 	public List<SalesInvoice> getSalesInvoicesList() {
 		return baseService.getAll(SalesInvoice.class);
 	}
+	
+	@GetMapping("/customers")
+	public List<Customer> getCustomersList() {
+		return baseService.getAll(Customer.class);
+	}
 	 
 	@PostMapping("/purchaseInvoices")
 	public PurchaseInvoice addNewPurchaseInvoice(@RequestBody PurchaseInvoice purchaseInvoice) {
@@ -70,6 +75,13 @@ public class InvoiceRestController {
 		salesInvoices.setShippingOrder(tempShippingOrder);
 		baseService.saveOrUpdate(salesInvoices);
 		return salesInvoices;
+	}
+	
+	@PostMapping("/customers")
+	public Customer addNewCustomer(@RequestBody Customer customer) {
+		customer.setId(0);
+		baseService.saveOrUpdate(customer);
+		return customer;
 	}
 	
 	@GetMapping("/purchaseInvoices/{purchaseInvoiceId}")
