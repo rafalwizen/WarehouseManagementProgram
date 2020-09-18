@@ -20,6 +20,7 @@ import wizen.rafal.WMP.entity.ShippingOrder;
 import wizen.rafal.WMP.entity.Transfer;
 import wizen.rafal.WMP.entity.TransportCompany;
 import wizen.rafal.WMP.service.BaseService;
+import wizen.rafal.WMP.service.InvoiceService;
 
 @RestController
 @RequestMapping("/api/invoice")
@@ -27,10 +28,12 @@ import wizen.rafal.WMP.service.BaseService;
 public class InvoiceRestController {
 
 	private BaseService baseService;
+	private InvoiceService invoiceService;
 	
 	@Autowired
-	public InvoiceRestController(BaseService baseService) {
+	public InvoiceRestController(BaseService baseService, InvoiceService invoiceService) {
 		this.baseService = baseService;
+		this.invoiceService = invoiceService;
 	}
 	
 	@GetMapping("/purchaseInvoices")
@@ -108,4 +111,12 @@ public class InvoiceRestController {
 		baseService.delete(SalesInvoice.class, salesInvoiceId);
 		return "Deleted sales invoice id - " + salesInvoiceId;
 	}
+	
+	@GetMapping("/salesInvoices/{salesInvoiceId}/{salesOrderId}")
+	public String addOrderToSalesInvoice (@PathVariable int salesInvoiceId, @PathVariable int salesOrderId) {
+		invoiceService.addOrderToSalesInvoice(salesInvoiceId, salesOrderId);
+		return "";
+	}
+	
+	
 }

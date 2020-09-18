@@ -3,16 +3,17 @@ package wizen.rafal.WMP.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import wizen.rafal.WMP.dao.GenericDAO;
-import wizen.rafal.WMP.entity.Item;
 
 @Service
+@Primary
 public class BaseServiceImpl implements BaseService {
 
-	private GenericDAO genericDAO;
+	protected GenericDAO genericDAO;
 	
 	@Autowired
 	public BaseServiceImpl(GenericDAO genericDAO) {

@@ -92,7 +92,7 @@ CREATE TABLE `sales_invoice` (
 CREATE TABLE `sales_order` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
 	`quantity` varchar(128) NOT NULL,
-	`sales_invoice_id` int(11) NOT NULL,
+	`sales_invoice_id` int(11),
 	`item_id` int(11) NOT NULL,
 	 PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin2;
@@ -136,7 +136,7 @@ CREATE TABLE `purchase_invoice` (
 CREATE TABLE `purchase_order` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
 	`quantity` int(11) NOT NULL,
-	`purchase_invoice_id` int(11) NOT NULL,
+	`purchase_invoice_id` int(11),
 	`item_id` int(11) NOT NULL,
 	 PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin2;
@@ -223,6 +223,8 @@ INSERT INTO `sales_invoice` VALUES
 			(1, "2020-06-26 11:05:00", 1, 1, 1, 2);
 
 INSERT INTO `sales_order` VALUES 
-			(1, 7, 1, 1);
+			(1, 7, 1, 1),
+            (2, 17, null, 1),
+            (3, 27, null, 1);
 		
 

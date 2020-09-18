@@ -1,5 +1,6 @@
 package wizen.rafal.WMP.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -64,5 +65,12 @@ public class SalesInvoice {
 	public SalesInvoice(int id, Date dateOfIssue) {
 		this.id = id;
 		this.dateOfIssue = dateOfIssue;
+	}
+	
+	public void addSalesOrder (SalesOrder salesOrder) {
+		if (salesOrders == null) {
+			salesOrders = new ArrayList<>();
+		}
+		salesOrders.add(salesOrder);
 	}
 }
