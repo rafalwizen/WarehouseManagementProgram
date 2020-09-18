@@ -66,7 +66,6 @@ public class InvoiceRestController {
 		Transfer tempTransfer = new Transfer();
 		baseService.saveOrUpdate(tempTransfer);
 		salesInvoices.setTransfer(tempTransfer);
-		//salesInvoices.setTransfer(baseService.getByID(Transfer.class, salesInvoices.getTransfer().getId()));
 		salesInvoices.setCustomer(baseService.getByID(Customer.class, salesInvoices.getCustomer().getId()));
 		salesInvoices.setEmployee(baseService.getByID(Employee.class, salesInvoices.getEmployee().getId()));
 		ShippingOrder tempShippingOrder = new ShippingOrder();
