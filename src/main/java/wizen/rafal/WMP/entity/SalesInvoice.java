@@ -72,5 +72,6 @@ public class SalesInvoice {
 			salesOrders = new ArrayList<>();
 		}
 		salesOrders.add(salesOrder);
+		salesOrder.setSalesInvoice(this);
 	}
 }

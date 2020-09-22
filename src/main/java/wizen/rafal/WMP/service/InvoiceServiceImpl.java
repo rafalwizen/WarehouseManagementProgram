@@ -19,8 +19,6 @@ public class InvoiceServiceImpl extends BaseServiceImpl implements InvoiceServic
 	public void addOrderToSalesInvoice(int salesInvoiceId, int salesOrderId) {
 		SalesInvoice salesInvoice = genericDAO.getByID(SalesInvoice.class, salesInvoiceId);
 		salesInvoice.addSalesOrder(genericDAO.getByID(SalesOrder.class, salesOrderId));
-		System.out.println("te");
-		genericDAO.saveOrUpdate(salesInvoice);
 	}
 
 }

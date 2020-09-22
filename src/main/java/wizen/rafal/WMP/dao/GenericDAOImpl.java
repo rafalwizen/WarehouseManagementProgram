@@ -13,14 +13,11 @@ import org.springframework.stereotype.Repository;
 public class GenericDAOImpl implements GenericDAO {
 
 	private EntityManager entityManager;
-	
-	
+		
 	@Autowired
 	public GenericDAOImpl(EntityManager entityManager) {
 		this.entityManager = entityManager;
 	}
-
-
 
 	@Override
 	public <T> List<T> getAll(final Class<T> type) {
@@ -38,15 +35,11 @@ public class GenericDAOImpl implements GenericDAO {
 		return tempObject;
 	}
 
-
-
 	@Override
 	public <T> void saveOrUpdate(T object) {
 		Session currentSession = entityManager.unwrap(Session.class);
 		currentSession.saveOrUpdate(object);
 	}
-
-
 
 	@Override
 	public <T> void delete(Class<T> type, int theId) {
