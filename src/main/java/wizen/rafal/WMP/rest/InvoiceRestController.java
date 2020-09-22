@@ -118,5 +118,9 @@ public class InvoiceRestController {
 		return "";
 	}
 	
-	
+	@GetMapping("/purchaseInvoices/{purchaseInvoiceId}/{purchaseOrderId}")
+	public String addOrderToPurchaseInvoice (@PathVariable int purchaseInvoiceId, @PathVariable int purchaseOrderId) {
+		invoiceService.addOrderToSalesInvoice(purchaseInvoiceId, purchaseOrderId);
+		return "";
+	}
 }
