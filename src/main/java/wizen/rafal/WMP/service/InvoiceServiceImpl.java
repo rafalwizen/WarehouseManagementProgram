@@ -18,20 +18,26 @@ public class InvoiceServiceImpl extends BaseServiceImpl implements InvoiceServic
 
 	@Override
 	@Transactional
-	public SalesOrder addOrderToSalesInvoice(int salesInvoiceId, int salesOrderId) {
+	public String addOrderToSalesInvoice(int salesInvoiceId, int salesOrderId) {
 		SalesInvoice salesInvoice = genericDAO.getByID(SalesInvoice.class, salesInvoiceId);
 		SalesOrder salesOrder = genericDAO.getByID(SalesOrder.class, salesOrderId);
-		if(salesOrder != null) {salesInvoice.addSalesOrder(salesOrder);}
-		return salesOrder;
+		if(salesInvoice == null) {return "Something went wrong - sales invoice doesn't exist";}
+		if(salesOrder == null) {return "Something went wrong - sales order doesn't exist";}
+		if(salesOrder.getSalesInvoice() != null) { return "Something went wrong - sales order is already added to some invoice";}
+		salesInvoice.addSalesOrder(salesOrder);
+		return "Sales order with id: " + salesOrderId + " added to sales invoice with id: " + salesInvoiceId;
 	}
 
 	@Override
 	@Transactional
-	public PurchaseOrder addOrderToPurchaseInvoice(int purchaseInvoiceId, int purchaseOrderId) {
+	public String addOrderToPurchaseInvoice(int purchaseInvoiceId, int purchaseOrderId) {
 		PurchaseInvoice purchaseInvoice = genericDAO.getByID(PurchaseInvoice.class, purchaseInvoiceId);
 		PurchaseOrder purchaseOrder = genericDAO.getByID(PurchaseOrder.class, purchaseOrderId);
-		if(purchaseOrder != null) {purchaseInvoice.addPurchaseOrder(purchaseOrder);}
-		return purchaseOrder;
+		if(purchaseInvoice == null) {return "Something went wrong - purchase invoice doesn't exist";}
+		if(purchaseOrder == null) {return "Something went wrong - purchase order doesn't exist";}
+		if(purchaseOrder.getPurchaseInvoice() != null) { return "Something went wrong - purchase order is already added to some invoice";}
+		purchaseInvoice.addPurchaseOrder(purchaseOrder);
+		return "Purchase order with id: " + purchaseOrderId + " added to purchase invoice with id: " + purchaseInvoiceId;
 	}
 
 	

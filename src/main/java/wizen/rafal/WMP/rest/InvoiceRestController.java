@@ -116,16 +116,12 @@ public class InvoiceRestController {
 	
 	@GetMapping("/salesInvoices/{salesInvoiceId}/{salesOrderId}")
 	public String addOrderToSalesInvoice (@PathVariable int salesInvoiceId, @PathVariable int salesOrderId) {
-		SalesOrder tempSalesOrder = invoiceService.addOrderToSalesInvoice(salesInvoiceId, salesOrderId);
-		if(tempSalesOrder != null) {return "Sales order with id: " + salesOrderId + " added to sales invoice with id: " + salesInvoiceId;}
-		return "Something went wrong - sales order can't be added to that invoice";
+		return invoiceService.addOrderToSalesInvoice(salesInvoiceId, salesOrderId);
 	}
 	
 	@GetMapping("/purchaseInvoices/{purchaseInvoiceId}/{purchaseOrderId}")
 	public String addOrderToPurchaseInvoice (@PathVariable int purchaseInvoiceId, @PathVariable int purchaseOrderId) {
-		PurchaseOrder tempPurchaseOrder = invoiceService.addOrderToPurchaseInvoice(purchaseInvoiceId, purchaseOrderId);
-		if(tempPurchaseOrder != null) {return "Purchase order with id: " + purchaseOrderId + " added to purchase invoice with id: " + purchaseInvoiceId;}
-		return "Something went wrong - purchase order can't be added to that invoice";
+		return invoiceService.addOrderToPurchaseInvoice(purchaseInvoiceId, purchaseOrderId);
 	}
 	
 	

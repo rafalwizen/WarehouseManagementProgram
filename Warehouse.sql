@@ -232,7 +232,8 @@ INSERT INTO `purchase_invoice` VALUES
 			(1, "2020-06-26 11:05:00", 1, 1, 1);
 
 INSERT INTO `purchase_order` VALUES 
-			(1, 5, 1, 1);
+			(1, 5, 1, 1),
+            (2, 2, null, 2);
 
 INSERT INTO `sales_invoice` VALUES 
 			(1, "2020-06-26 11:05:00", 1, 1, 1, 2);
