@@ -26,8 +26,11 @@ public class Item {
 	@Column(name="id")
 	private int id;
 	
-	@Column(name="name")
-	private String name;
+	@Column(name="part_number")
+	private String partNumber;
+	
+	@Column(name="description")
+	private String description;
 	
 	@Column(name="weight")
 	private int weight;
@@ -62,10 +65,11 @@ public class Item {
 		
 	}
 
-	public Item(int id, String name, int weight, char area, int bookstand, int shelf, int availability,
+	public Item(int id, String partNumber, String description, int weight, char area, int bookstand, int shelf, int availability,
 			boolean belongsToCumstomsWarehouse, boolean isDamaged, boolean isTeritorialyRestricted) {
 		this.id = id;
-		this.name = name;
+		this.partNumber = partNumber;
+		this.description = description;
 		this.weight = weight;
 		this.area = area;
 		this.bookstand = bookstand;

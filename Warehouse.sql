@@ -9,7 +9,8 @@ USE `warehouse_directory`;
 
 CREATE TABLE `item` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
-	`name` varchar(128) NOT NULL,
+    `part_number` varchar(32) NOT NULL,
+	`description` varchar(128) NOT NULL,
 	`weight` int DEFAULT NULL,
 	`area` varchar(1) DEFAULT NULL,
 	`bookstand` int(4) DEFAULT NULL,
@@ -198,15 +199,15 @@ INSERT INTO `manufacturer` VALUES
             (3, "Canon", "CAN");
             
 INSERT INTO `item` VALUES 
-			(1, "Brother Toner TN2420 High capacity TN-2420 schwarz", 651, "E", 1, 1, 43, 0, 0, 0, 2),
-            (2, "Brother Toner TN3480 Standard Capacity TN-3480 schwarz", 1257, "E", 1, 2, 45, 0, 0, 0, 2),
-            (3, "Brother Toner TN2320 High capacity TN-2320 schwarz", 667, "E", 1, 2, 37, 0, 0, 0, 2),
-            (4, "Xerox Toner 106R02777 High capacity schwarz", 727, "A", 1, 1, 37, 0, 0, 0, 1),
-            (5, "Xerox Toner 106R03480 High capacity schwarz", 184, "A", 1, 2, 107, 0, 0, 0, 1),
-            (6, "Xerox Toner 106R02311 High capacity schwarz", 1513, "A", 1, 1, 24, 0, 0, 0, 1),
-            (7, "Canon Toner 2785B002 standard capacity C-EXV33 schwarz", 963, "D", 7, 1, 34, 0, 0, 0, 3),
-            (8, "Canon Toner 8524B002 standard capacity C-EXV49 schwarz", 1071, "D", 8, 1, 55, 0, 0, 0, 3),
-            (9, "Canon Toner-Kartusche 2790B002 standard capacity C-EXV29 schwarz", 1051, "D", 7, 1, 54, 0, 0, 0, 3);
+			(1, "TN-2420", "Brother Toner TN2420 High capacity TN-2420 black", 651, "E", 1, 1, 43, 0, 0, 0, 2),
+            (2, "TN-3480", "Brother Toner TN3480 Standard Capacity TN-3480 black", 1257, "E", 1, 2, 45, 0, 0, 0, 2),
+            (3, "TN-2320", "Brother Toner TN2320 High capacity TN-2320 black", 667, "E", 1, 2, 37, 0, 0, 0, 2),
+            (4, "106R02777", "Xerox Toner 106R02777 High capacity black", 727, "A", 1, 1, 37, 0, 0, 0, 1),
+            (5, "106R03480", "Xerox Toner 106R03480 High capacity black", 184, "A", 1, 2, 107, 0, 0, 0, 1),
+            (6, "106R02311", "Xerox Toner 106R02311 High capacity black", 1513, "A", 1, 1, 24, 0, 0, 0, 1),
+            (7, "2785B002", "Canon Toner 2785B002 standard capacity C-EXV33 black", 963, "D", 7, 1, 34, 0, 0, 0, 3),
+            (8, "8524B002", "Canon Toner 8524B002 standard capacity C-EXV49 black", 1071, "D", 8, 1, 55, 0, 0, 0, 3),
+            (9, "2790B002", "Canon Toner-Cartridge 2790B002 standard capacity C-EXV29 black", 1051, "D", 7, 1, 54, 0, 0, 0, 3);
             
 INSERT INTO `branch` VALUES 
 			(1, "Wrocław - Office", "Wro-O", "Prosta 1/2", "Wrocław", "53-226");
