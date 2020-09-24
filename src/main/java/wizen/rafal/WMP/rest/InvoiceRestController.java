@@ -115,12 +115,12 @@ public class InvoiceRestController {
 	@GetMapping("/salesInvoices/{salesInvoiceId}/{salesOrderId}")
 	public String addOrderToSalesInvoice (@PathVariable int salesInvoiceId, @PathVariable int salesOrderId) {
 		invoiceService.addOrderToSalesInvoice(salesInvoiceId, salesOrderId);
-		return "";
+		return "Sales order with id: " + salesOrderId + " added to sales invoice with id: " + salesInvoiceId;
 	}
 	
 	@GetMapping("/purchaseInvoices/{purchaseInvoiceId}/{purchaseOrderId}")
 	public String addOrderToPurchaseInvoice (@PathVariable int purchaseInvoiceId, @PathVariable int purchaseOrderId) {
 		invoiceService.addOrderToSalesInvoice(purchaseInvoiceId, purchaseOrderId);
-		return "";
+		return "Purchase order with id: " + purchaseOrderId + " added to purchase invoice with id: " + purchaseInvoiceId;
 	}
 }

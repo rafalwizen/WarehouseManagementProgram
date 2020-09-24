@@ -4,22 +4,22 @@ CREATE DATABASE  IF NOT EXISTS `warehouse_directory`;
 USE `warehouse_directory`;
 
 
--- creating tables ------------------------------------------------------------------------------
+-- create tables ------------------------------------------------------------------------------
 
 
 CREATE TABLE `item` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(128) NOT NULL,
-  `weight` int DEFAULT NULL,
-  `area` varchar(1) DEFAULT NULL,
-  `bookstand` int(4) DEFAULT NULL,
-  `shelf` int(4) DEFAULT NULL,
-  `availability` int(11) NOT NULL,
-  `belongs_to_cumstoms_warehouse` boolean DEFAULT NULL,
-  `is_damaged` boolean DEFAULT NULL,
-  `is_teritorialy_restricted` boolean DEFAULT NULL,
-  `manufacturer_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+	`id` int(11) NOT NULL AUTO_INCREMENT,
+	`name` varchar(128) NOT NULL,
+	`weight` int DEFAULT NULL,
+	`area` varchar(1) DEFAULT NULL,
+	`bookstand` int(4) DEFAULT NULL,
+	`shelf` int(4) DEFAULT NULL,
+	`availability` int(11) NOT NULL,
+	`belongs_to_cumstoms_warehouse` boolean DEFAULT NULL,
+	`is_damaged` boolean DEFAULT NULL,
+	`is_teritorialy_restricted` boolean DEFAULT NULL,
+	`manufacturer_id` int(11) NOT NULL,
+	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin2;	
 
 
@@ -142,7 +142,8 @@ CREATE TABLE `purchase_order` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin2;
 
 				
-				-- creating foreign keys -----------------------------------------
+-- create foreign keys -----------------------------------------
+
 
 ALTER TABLE `item`
 ADD FOREIGN KEY (`manufacturer_id`) REFERENCES `manufacturer` (`id`);
@@ -179,7 +180,10 @@ ALTER TABLE `purchase_order`
 ADD FOREIGN KEY (`purchase_invoice_id`) REFERENCES `purchase_invoice` (`id`),
 ADD FOREIGN KEY (`item_id`) REFERENCES `item` (`id`);
 				
-                -- add some data for testing ------------------------------
+                
+-- add some data for testing ------------------------------
+
+
 INSERT INTO `transport_company` VALUES 
 			(1,"DeHaeL","DHL");
           
@@ -189,10 +193,20 @@ INSERT INTO `shipping_order` VALUES
             (3,"2020-07-21 12:00:00",1),
             (4,"2020-07-21 11:00:00",1);
 INSERT INTO `manufacturer` VALUES 
-			(1, "Xerox", "XRX"); 
+			(1, "Xerox", "XRX"),
+            (2, "Brother", "BR"),
+            (3, "Canon", "CAN");
             
 INSERT INTO `item` VALUES 
-			(1, "toner", 120, "A", 2, 1, 13, 0, 0, 0, 1);
+			(1, "Brother Toner TN2420 High capacity TN-2420 schwarz", 651, "E", 1, 1, 43, 0, 0, 0, 2),
+            (2, "Brother Toner TN3480 Standard Capacity TN-3480 schwarz", 1257, "E", 1, 2, 45, 0, 0, 0, 2),
+            (3, "Brother Toner TN2320 High capacity TN-2320 schwarz", 667, "E", 1, 2, 37, 0, 0, 0, 2),
+            (4, "Xerox Toner 106R02777 High capacity schwarz", 727, "A", 1, 1, 37, 0, 0, 0, 1),
+            (5, "Xerox Toner 106R03480 High capacity schwarz", 184, "A", 1, 2, 107, 0, 0, 0, 1),
+            (6, "Xerox Toner 106R02311 High capacity schwarz", 1513, "A", 1, 1, 24, 0, 0, 0, 1),
+            (7, "Canon Toner 2785B002 standard capacity C-EXV33 schwarz", 963, "D", 7, 1, 34, 0, 0, 0, 3),
+            (8, "Canon Toner 8524B002 standard capacity C-EXV49 schwarz", 1071, "D", 8, 1, 55, 0, 0, 0, 3),
+            (9, "Canon Toner-Kartusche 2790B002 standard capacity C-EXV29 schwarz", 1051, "D", 7, 1, 54, 0, 0, 0, 3);
             
 INSERT INTO `branch` VALUES 
 			(1, "Wrocław - Office", "Wro-O", "Prosta 1/2", "Wrocław", "53-226");
@@ -225,6 +239,9 @@ INSERT INTO `sales_invoice` VALUES
 INSERT INTO `sales_order` VALUES 
 			(1, 7, 1, 1),
             (2, 17, null, 1),
-            (3, 27, null, 1);
+            (3, 5, null, 2),
+            (4, 6, null, 5),
+            (5, 8, null, 4),
+            (6, 4, null, 3);
 		
 
