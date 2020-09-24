@@ -18,16 +18,20 @@ public class InvoiceServiceImpl extends BaseServiceImpl implements InvoiceServic
 
 	@Override
 	@Transactional
-	public void addOrderToSalesInvoice(int salesInvoiceId, int salesOrderId) {
+	public SalesOrder addOrderToSalesInvoice(int salesInvoiceId, int salesOrderId) {
 		SalesInvoice salesInvoice = genericDAO.getByID(SalesInvoice.class, salesInvoiceId);
-		salesInvoice.addSalesOrder(genericDAO.getByID(SalesOrder.class, salesOrderId));
+		SalesOrder salesOrder = genericDAO.getByID(SalesOrder.class, salesOrderId);
+		if(salesOrder != null) {salesInvoice.addSalesOrder(salesOrder);}
+		return salesOrder;
 	}
 
 	@Override
 	@Transactional
-	public void addOrderToPurchaseInvoice(int purchaseInvoiceId, int purchaseOrderId) {
+	public PurchaseOrder addOrderToPurchaseInvoice(int purchaseInvoiceId, int purchaseOrderId) {
 		PurchaseInvoice purchaseInvoice = genericDAO.getByID(PurchaseInvoice.class, purchaseInvoiceId);
-		purchaseInvoice.addPurchaseOrder(genericDAO.getByID(PurchaseOrder.class, purchaseOrderId));
+		PurchaseOrder purchaseOrder = genericDAO.getByID(PurchaseOrder.class, purchaseOrderId);
+		if(purchaseOrder != null) {purchaseInvoice.addPurchaseOrder(purchaseOrder);}
+		return purchaseOrder;
 	}
 
 	

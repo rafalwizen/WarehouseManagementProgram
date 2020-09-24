@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 import wizen.rafal.WMP.entity.Customer;
 import wizen.rafal.WMP.entity.Employee;
 import wizen.rafal.WMP.entity.PurchaseInvoice;
+import wizen.rafal.WMP.entity.PurchaseOrder;
 import wizen.rafal.WMP.entity.SalesInvoice;
+import wizen.rafal.WMP.entity.SalesOrder;
 import wizen.rafal.WMP.entity.ShippingOrder;
 import wizen.rafal.WMP.entity.Transfer;
 import wizen.rafal.WMP.entity.TransportCompany;
@@ -114,13 +116,19 @@ public class InvoiceRestController {
 	
 	@GetMapping("/salesInvoices/{salesInvoiceId}/{salesOrderId}")
 	public String addOrderToSalesInvoice (@PathVariable int salesInvoiceId, @PathVariable int salesOrderId) {
-		invoiceService.addOrderToSalesInvoice(salesInvoiceId, salesOrderId);
-		return "Sales order with id: " + salesOrderId + " added to sales invoice with id: " + salesInvoiceId;
+		SalesOrder tempSalesOrder = invoiceService.addOrderToSalesInvoice(salesInvoiceId, salesOrderId);
+		if(tempSalesOrder != null) {return "Sales order with id: " + salesOrderId + " added to sales invoice with id: " + salesInvoiceId;}
+		return "Something went wrong - sales order can't be added to that invoice";
 	}
 	
 	@GetMapping("/purchaseInvoices/{purchaseInvoiceId}/{purchaseOrderId}")
 	public String addOrderToPurchaseInvoice (@PathVariable int purchaseInvoiceId, @PathVariable int purchaseOrderId) {
-		invoiceService.addOrderToSalesInvoice(purchaseInvoiceId, purchaseOrderId);
-		return "Purchase order with id: " + purchaseOrderId + " added to purchase invoice with id: " + purchaseInvoiceId;
+		PurchaseOrder tempPurchaseOrder = invoiceService.addOrderToPurchaseInvoice(purchaseInvoiceId, purchaseOrderId);
+		if(tempPurchaseOrder != null) {return "Purchase order with id: " + purchaseOrderId + " added to purchase invoice with id: " + purchaseInvoiceId;}
+		return "Something went wrong - purchase order can't be added to that invoice";
 	}
+	
+	
+	
+	
 }
