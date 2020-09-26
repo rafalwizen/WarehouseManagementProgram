@@ -48,4 +48,13 @@ public class GenericDAOImpl implements GenericDAO {
 		currentSession.delete(tempObject);
 	}
 
+	@Override
+	public <T> List<T> getByVariable(Class<T> type, String nameOfVariable, String value) {
+		Session currentSession = entityManager.unwrap(Session.class);
+		Query <T> theQuery = currentSession.createQuery(
+				"from "+ type.getSimpleName() + " where " + nameOfVariable + " = '" + value + "'", type);
+		List<T> list = theQuery.getResultList();
+		return list;
+	}
+
 }

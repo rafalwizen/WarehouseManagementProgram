@@ -54,6 +54,12 @@ public class ItemRestController {
 		return "Deleted item id - " + itemId;
 	}
 	
+	@GetMapping("/items/partNumber/{itemPartNumber}")
+	public List<Item> getItemByPartNumber(@PathVariable String itemPartNumber) {
+		List<Item> list = baseService.getByVariable(Item.class, "part_number", itemPartNumber);
+		return list;
+	}
+	
 	@GetMapping("/manufacturers")
 	public List<Manufacturer> getManufacturersList() {
 		return baseService.getAll(Manufacturer.class);

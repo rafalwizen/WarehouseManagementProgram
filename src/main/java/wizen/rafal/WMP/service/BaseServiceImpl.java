@@ -51,4 +51,11 @@ public class BaseServiceImpl implements BaseService {
 		genericDAO.delete(type, theId);		
 	}
 
+
+
+	@Override
+	public <T> List<T> getByVariable(Class<T> type, String nameOfVariable, String value) {
+		return genericDAO.getByVariable(type, nameOfVariable, value);
+	}
+
 }

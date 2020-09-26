@@ -10,4 +10,5 @@ public interface BaseService {
 	public <T> T getByID (final Class<T> type, int theId);
 	public <T> void saveOrUpdate (T object);
 	public <T> void delete(final Class<T> type, int theId);
+	public <T> List<T> getByVariable(Class<T> type, String nameOfVariable, String value);
 }
